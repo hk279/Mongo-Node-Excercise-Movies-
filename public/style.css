@@ -1,0 +1,9 @@
+body {
+    padding: 1em;
+}
+div {
+    padding: 1em;
+}
+.alert {
+    max-width: 40%;
+}

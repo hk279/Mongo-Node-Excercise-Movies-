@@ -1,0 +1,26 @@
+<html>
+<%- include("../partials/head") %>
+
+<body>
+    <button class="btn btn-primary" style="float: right;" onclick="window.location.href = '/logout'">Logout</button>
+    <div class="jumbotron">
+        <h2>Welcome to Movie Search,
+            <%= user %>
+        </h2>
+    </div>
+    <form method="POST" action="/">
+        <div class="form-group">
+            <label for="search">Search by movie name:</label>
+            <input class="form-control" type="text" name="search" id="search">
+            <button class="btn btn-primary" type="submit" id="search-button">Search</button>
+        </div>
+    </form>
+    <hr>
+    <%- include("../partials/footer") %>
+</body>
+
+<script>
+
+</script>
+
+</html>

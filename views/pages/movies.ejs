@@ -1,0 +1,25 @@
+<html>
+<%- include("../partials/head") %>
+
+<body>
+    <div class="jumbotron">
+        <h2>Search Results</h2>
+    </div>
+    <table class="table">
+        <tbody id="table-body">
+            <% resultsTable.forEach(element => { %>
+            <tr>
+                <td><%= element.title %> </td>
+                <td><%= element.year %></td>
+                <td><img style="max-width: 8%;" src="<%= element.poster %>"></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <hr>
+    <%- include("../partials/footer") %>
+</body>
+
+
+
+</html>

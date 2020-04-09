@@ -1,0 +1,29 @@
+<html>
+<%- include("../partials/head") %>
+
+<body>
+    <h2>Login</h2>
+    <!-- Done with form http post instead of AJAX post -->
+    <form style="width: 40%;" method="POST" action="/login">
+        <div class=" form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+    <% if(alert == "Incorrect username or password") { %>
+    <div class="alert alert-danger" role="alert"><%= alert %> </div>
+    <% } else if(alert == "Registration successful!") { %>
+    <div class="alert alert-success" role="alert"><%= alert %> </div>
+    <% } %>
+    <hr>
+    <a href="/register">Register as a new user</a>
+    <hr>
+    <%- include("../partials/footer") %>
+</body>
+
+</html>

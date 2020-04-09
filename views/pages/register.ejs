@@ -1,0 +1,44 @@
+<html>
+<%- include("../partials/head") %>
+
+<body>
+    <h2>Register as a New User</h2>
+    <form style="width: 40%;">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username" id="username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password">
+        </div>
+    </form>
+    <button class="btn btn-primary" id="submit-button">Submit</button>
+    <div id="alert"></div>
+    <hr>
+    <a href="/login">Login</a>
+    <hr>
+    <%- include("../partials/footer") %>
+</body>
+
+<script>
+    var submitButton = document.getElementById("submit-button")
+    submitButton.addEventListener("click", () => {
+        var username = document.getElementById("username").value
+        var password = document.getElementById("password").value
+
+        var xhttp = new XMLHttpRequest()
+
+        xhttp.open("POST", "/register", true)
+        xhttp.setRequestHeader("Content-type", "application/json")
+
+        var userDetails = {
+            user: username,
+            pw: password
+        }
+
+        xhttp.send(JSON.stringify(userDetails))
+    })
+</script>
+
+</html>
