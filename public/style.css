@@ -43,3 +43,23 @@ div {
     vertical-align: middle;
     margin: 1.5em;
 }
+
+@media only screen and (max-width: 900px) {
+    #login-div,
+    #login-img,
+    #register-div,
+    #register-img {
+        display: block;
+    }
+    #login-div,
+    #register-div {
+        width: 100%;
+        margin: auto;
+    }
+    #login-img,
+    #register-img {
+        margin: auto;
+        margin-bottom: 2em;
+        width: 40%;
+    }
+}
