@@ -24,16 +24,13 @@ app.use(
 
 app.get("/", (req, res) => {
     if (req.mySession.id) {
-        console.log(req.mySession.id);
         res.render("pages/index", { user: req.mySession.username });
     } else {
-        console.log(req.mySession.id);
         res.redirect("/login");
     }
 });
 app.post("/", async (req, res) => {
     var keyword = req.body.search;
-    /* console.log("Keyword " + keyword + " received by the server."); */
     var table = await mongo.getMovies(keyword);
     res.render("pages/movies", { resultsTable: table });
 });
@@ -44,9 +41,14 @@ app.post("/login", async (req, res) => {
     var user = req.body.username;
     var pw = req.body.password;
 
-    var login = await mongo.getUser(user, pw).then((result) => {
-        return result;
-    });
+    var login = await mongo
+        .getUser(user, pw)
+        .catch((err) => {
+            console.log(err);
+        })
+        .then((result) => {
+            return result;
+        });
 
     if (login == null) {
         res.render("pages/login", {
@@ -54,21 +56,33 @@ app.post("/login", async (req, res) => {
         });
     } else {
         req.mySession.id = login._id;
-        console.log(req.mySession.id);
+
         req.mySession.username = login.username;
-        console.log(req.mySession.username);
+
         res.redirect("/");
     }
 });
 app.get("/register", (req, res) => {
-    res.render("pages/register");
+    res.render("pages/register", { alert: "" });
 });
-app.post("/register", (req, res) => {
-    var user = req.body.user;
-    var pw = req.body.pw;
+app.post("/register", async (req, res) => {
+    var user = req.body.username;
+    var pw = req.body.password;
 
-    mongo.saveUser(user, pw);
-    res.render("pages/login", { alert: "Registration successful!" });
+    var message = await mongo
+        .saveUser(user, pw)
+        .catch((err) => {
+            console.log(err);
+        })
+        .then((result) => {
+            return result;
+        });
+
+    if (message === "New user registered!") {
+        res.render("pages/login", { alert: message });
+    } else {
+        res.render("pages/register", { alert: message });
+    }
 });
 app.get("/logout", (req, res) => {
     req.mySession.reset();

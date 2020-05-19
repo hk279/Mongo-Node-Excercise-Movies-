@@ -3,7 +3,6 @@
 
 <body>
     <h2>Login</h2>
-    <!-- Done with form http post instead of AJAX post -->
     <form style="width: 40%;" method="POST" action="/login">
         <div class=" form-group">
             <label for="username">Username</label>
@@ -17,7 +16,7 @@
     </form>
     <% if(alert == "Incorrect username or password") { %>
     <div class="alert alert-danger" role="alert"><%= alert %> </div>
-    <% } else if(alert == "Registration successful!") { %>
+    <% } else if(alert == "New user registered!") { %>
     <div class="alert alert-success" role="alert"><%= alert %> </div>
     <% } %>
     <hr>

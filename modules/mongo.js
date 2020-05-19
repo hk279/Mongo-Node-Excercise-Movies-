@@ -48,7 +48,11 @@ const movieSchema = mongoose.Schema(
     }
 );
 
-exports.saveUser = function saveUser(regUsername, regPassword) {
+exports.saveUser = async function saveUser(regUsername, regPassword) {
+    if (regUsername.length < 3 || regPassword.length < 3) {
+        return "Username and password need to contain at least 3 characters.";
+    }
+
     const User = mongoose.model("User", userSchema);
 
     const uri = process.env.URI;
@@ -67,15 +71,17 @@ exports.saveUser = function saveUser(regUsername, regPassword) {
         password: regPassword,
     });
 
-    newUser
+    var message = await newUser
         .save()
         .catch((err) => {
-            console.log(err.message);
+            return "Database error\n" + err;
         })
         .then((r) => {
-            console.log("New user saved\n" + r);
             db.close();
+            return "New user registered!";
         });
+
+    return message;
 };
 
 exports.getUser = async function getUser(loginUsername, loginPassword) {
