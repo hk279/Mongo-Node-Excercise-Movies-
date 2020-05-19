@@ -5,9 +5,6 @@ body {
 div {
     padding: 1em;
 }
-.alert {
-    max-width: 40%;
-}
 #search {
     display: inline-block;
     max-width: 40%;
@@ -20,10 +17,27 @@ div {
     padding: 2em;
     background-color: #fce0a2;
     border-radius: 2em;
-    box-shadow: 5px 10px 5px #a98536;
+    box-shadow: inset 5px 10px 5px #a98536;
     text-align: left;
 }
 #login-img {
+    display: inline-flex;
+    width: 30%;
+    vertical-align: middle;
+    margin: 1.5em;
+}
+#register-div {
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+    margin: 1.5em;
+    padding: 2em;
+    background-color: #fce0a2;
+    border-radius: 2em;
+    box-shadow: inset 5px 10px 5px #a98536;
+    text-align: left;
+}
+#register-img {
     display: inline-flex;
     width: 30%;
     vertical-align: middle;
