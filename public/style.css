@@ -1,5 +1,6 @@
 body {
     padding: 1em;
+    background-color: #fff7e5;
 }
 div {
     padding: 1em;
@@ -10,4 +11,21 @@ div {
 #search {
     display: inline-block;
     max-width: 40%;
+}
+#login-div {
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+    margin: 1.5em;
+    padding: 2em;
+    background-color: #fce0a2;
+    border-radius: 2em;
+    box-shadow: 5px 10px 5px #a98536;
+    text-align: left;
+}
+#login-img {
+    display: inline-flex;
+    width: 30%;
+    vertical-align: middle;
+    margin: 1.5em;
 }
