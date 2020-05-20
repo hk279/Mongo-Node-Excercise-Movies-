@@ -5,6 +5,9 @@ body {
 div {
     padding: 1em;
 }
+.jumbotron {
+    background-color: #fce0a2;
+}
 #search {
     display: inline-block;
     max-width: 40%;
